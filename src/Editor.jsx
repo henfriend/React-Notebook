@@ -1,3 +1,4 @@
+import './Editor.css'
 import React, { useContext, useEffect, useState } from 'react'
 import DocumentsContext from './DocumentsContext'
 

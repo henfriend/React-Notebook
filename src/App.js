@@ -56,21 +56,28 @@ function App() {
     if(docName !== 'Untitled') {
       setDocName('Untitled')
     }
+
     textBox.classList.toggle('hidden')
     createButton.classList.toggle('hidden')
     setButtonText('Create New Document')
+    
     const newDoc = doc.array
     if(list.length > 0) {
       newDoc.unshift('')
     }
     setDoc({ array: newDoc, index: 0})
+
+    const editor = document.querySelector('#editor')
+    if(editor.classList.contains('hidden')) {
+      editor.classList.remove('hidden')
+    }
   }
 
   return (
     <DocumentsContext.Provider value={value}>
       <div>
-        <div>
-          <h1>My Documents</h1>
+        <section id='section-one'>
+          <h1>My Notebook</h1>
           <div>
             <NewPageButton value={buttonText} onClick={newPageOnClick}></NewPageButton>
             <input className="hidden" onChange={onTextChange} type="text"></input>
@@ -79,11 +86,11 @@ function App() {
           <div className="App">
             <PageListing value={list} onClick={onClickPageItem}/>
           </div>
-        </div>
-        <div className='hidden' id='editor'>
+        </section>
+        <section className='hidden' id='editor'>
           <h2>{title}</h2>
           <Editor/>
-        </div>  
+        </section>  
       </div>
     </DocumentsContext.Provider>
   )

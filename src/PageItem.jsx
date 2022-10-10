@@ -1,3 +1,4 @@
+import './PageItem.css'
 import React, { useContext } from 'react'
 import DocumentsContext from './DocumentsContext'
 
